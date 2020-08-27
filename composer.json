@@ -1,0 +1,20 @@
+{
+    "name": "dlpwd/router",
+    "type": "library",
+    "description": "Lightweight router library with named url parameters",
+    "keywords": ["router"],
+    "homepage": "https://github.com/DaveLegg/dlpwd-router",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dave Legg",
+            "email": "dave@dlpwd.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "dlpwd\\router\\": "."
+        }
+    }
+}
