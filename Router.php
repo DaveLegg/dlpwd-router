@@ -44,7 +44,7 @@ class Router
     public function addPrefix($_prefix, callable $_callback) {
         $oldPrefix = $this->__prefix;
 
-        $this->__prefix = $oldPrefix . (strlen($oldPrefix) ? '/' : '') . rtrim($_prefix,'/');
+        $this->__prefix = $oldPrefix . '/' . trim($_prefix,'/');
 
         $_callback($this);
 
