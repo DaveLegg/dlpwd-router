@@ -35,7 +35,7 @@ class Router
     }
 
     private function toRegex($_url) {
-        $_url = $this->__prefix . '/' . trim($_url, '/');
+        $_url = rtrim($this->__prefix . '/' . trim($_url, '/'), '/');
         return \preg_replace_callback('/{\s*?([a-zA-Z_][\w]+)\s*?}/', function($matches) {
             return '(?<'.trim($matches[1]).'>[^\/]+)';
         }, str_replace('/', '\/',$_url));
