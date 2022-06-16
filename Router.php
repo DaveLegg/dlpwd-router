@@ -54,7 +54,7 @@ class Router
     public function resolve($_url = null, $_method = null)
     {
         if(!isset($_url)) {
-            $_url = strtok($_SERVER["REQUEST_URI"], '?');
+            $_url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         }
         if(!isset($_method)) {
             $_method = $_SERVER['REQUEST_METHOD'];
