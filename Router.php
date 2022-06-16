@@ -26,6 +26,14 @@ class Router
     public function delete($_url, $_handler) {
         $this->__routes['delete'][$this->toRegex($_url)] = $_handler;
     }
+    
+    public function patch($_url, $_handler) {
+        $this->__routes['patch'][$this->toRegex($_url)] = $_handler;
+    }
+    
+    public function put($_url, $_handler) {
+        $this->__routes['put'][$this->toRegex($_url)] = $_handler;
+    }
 
     public function addRoute($_method, $_url, $_handler) {
         if(!\in_array(\strtolower($_method), ['get', 'post', 'delete'])) {
