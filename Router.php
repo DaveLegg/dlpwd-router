@@ -117,7 +117,7 @@ class Router
                 if($reflection instanceof ReflectionMethod) {
 
                     if ($reflection->isStatic()) {
-                        $reflection->invokeArgs(null, $pass);
+                        return $reflection->invokeArgs(null, $pass);
                     } else {
                         $controllerClass = new $handlerData[0]();
         
