@@ -11,6 +11,10 @@ class Router
         'get' => [],
         'post' => [],
         'delete' => [],
+        'put' => [],
+        'patch' => [],
+        'options' => [],
+        'head' => [],
     ];
 
     private $__prefix = '';
@@ -35,9 +39,17 @@ class Router
         $this->__routes['put'][$this->toRegex($_url)] = $_handler;
     }
 
+    public function options($_url, $_handler) {
+        $this->__routes['options'][$this->toRegex($_url)] = $_handler;
+    }
+
+    public function head($_url, $_handler) {
+        $this->__routes['head'][$this->toRegex($_url)] = $_handler;
+    }
+
     public function addRoute($_method, $_url, $_handler) {
-        if(!\in_array(\strtolower($_method), ['get', 'post', 'delete'])) {
-            throw new \InvalidArgumentException(sprintf('Argument 1 to \\dlpwd\\router\\Router::addRoute must be one of "GET", "POST" or "DELETE". %s given', $_method));
+        if(!\in_array(\strtolower($_method), ['get', 'post', 'delete', 'patch', 'put', 'options', 'head'])) {
+            throw new \InvalidArgumentException(sprintf('Argument 1 to \\dlpwd\\router\\Router::addRoute must be one of  "GET", "POST", "DELETE", "PATCH", "PUT", "OPTIONS" or "HEAD". %s given', $_method));
         }
         $this->__routes[\strtolower($_method)][$this->toRegex($_url)] = $_handler;
     }
