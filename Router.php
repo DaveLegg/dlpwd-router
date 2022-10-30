@@ -87,11 +87,7 @@ class Router
                 if($_handler instanceof \Closure) {
                     $reflection = new \ReflectionFunction($_handler);
                 } else {
-                    $_handlerMethod = '';
-                    if(!\is_callable($_handler, false, $_handlerMethod)) {
-                        throw new RouterException(sprintf("The handler provided for the route was not provided in a format the router can understand.\nRequested URL: %s", $_url));
-                    }
-                    if(\stripos($_handlerMethod, '::')) {
+                    if(\stripos($_handler, '::')) {
 
                         $handlerData = \explode('::', $_handlerMethod);
                         if(!\class_exists($handlerData[0])) {
