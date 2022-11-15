@@ -89,7 +89,7 @@ class Router
                 } else {
                     if(\stripos($_handler, '::')) {
 
-                        $handlerData = \explode('::', $_handlerMethod);
+                        $handlerData = \explode('::', $_handler);
                         if(!\class_exists($handlerData[0])) {
                             throw new RouterException(sprintf("The class specified as the controller for the requested url does not exist.\nRequested URL: %s\nController class: %s", $_url, $handlerData[0]), 500);
                         }
@@ -98,7 +98,7 @@ class Router
                             throw new RouterException(sprintf("The method specified as the controller for the requested url does not exist on the specified class.\nRequested URL: %s\nController class: %s\nMethod: %s", $_url, $handlerData[0], $handlerData[1]), 500);
                         }
         
-                        $reflection = new \ReflectionMethod($_handlerMethod);
+                        $reflection = new \ReflectionMethod($_handler);
         
                         if(!$reflection->isPublic()) {
                             throw new RouterException(sprintf("The method specified as the controller for the requested url is not public\nRequested URL: %s\nController Class: %s\nMethod: %s", $_url, $handlerData[0], $handlerData[1]), 500);
